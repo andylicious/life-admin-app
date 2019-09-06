@@ -11,29 +11,22 @@ const Form = styled.form`
   grid-column-gap: 1em;
 `;
 
-function useFormInput(initialValue) {
-  const [value, setValue] = useState(initialValue);
+export default function SingleInputForm(props) {
+  const [todo, setTodo] = useState('');
 
-  function handleValueChange(e) {
-    setValue(e.target.value);
-  }
-
-  return {
-    value,
-    onChange: handleValueChange,
+  const handleValueChange = e => {
+    setTodo(e.target.value);
   };
-}
-
-export default function SingleInputForm() {
-  const todo = useFormInput('');
 
   const onClickButton = e => {
     e.preventDefault();
+    props.submit(todo);
+    setTodo('');
   };
 
   return (
     <Form onSubmit={e => onClickButton(e)} autoComplete="off">
-      <TextField label="test" value={todo.value} onChange={todo.onChange} />
+      <TextField label="test" value={todo} onChange={handleValueChange} />
       <Button variant="contained" color="primary" onClick={e => onClickButton(e)}>
         {'Add'}
       </Button>

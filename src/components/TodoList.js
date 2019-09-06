@@ -3,25 +3,39 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import styled from 'styled-components';
 
-export default function TodoList() {
+const UL = styled.ul`
+  padding-inline-start: 0;
+`;
+
+export default function TodoList(props) {
+  const { items, checkItem } = props;
+
+  const handleCheckboxClick = (status, id) => {
+    checkItem(!status, id);
+  };
+
   return (
     <div>
-      <ul>
-        <ListItem key={1} role={undefined} dense button>
-          <ListItemIcon>
-            <Checkbox
-              edge="start"
-              color="primary"
-              tabIndex={-1}
-              disableRipple
-              inputProps={{ 'aria-labelledby': 1 }}
-            />
-          </ListItemIcon>
-          <ListItemText id={1} primary={`Line item ${1 + 1}`} />
-        </ListItem>
-        <li>List item 2</li>
-      </ul>
+      <UL>
+        {items.map((item, key) => (
+          <ListItem key={key} role={undefined} dense button>
+            <ListItemIcon>
+              <Checkbox
+                edge="start"
+                color="primary"
+                tabIndex={-key}
+                checked={item.finished}
+                disableRipple
+                inputProps={{ 'aria-labelledby': key }}
+                onClick={() => handleCheckboxClick(item.finished, key)}
+              />
+            </ListItemIcon>
+            <ListItemText id={key} primary={item.task} />
+          </ListItem>
+        ))}
+      </UL>
     </div>
   );
 }
