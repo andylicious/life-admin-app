@@ -11,24 +11,6 @@ const Form = styled.form`
   grid-column-gap: 1em;
 `;
 
-export default function SingleInputForm(props) {
-  const todo = useFormInput('');
-
-  const onClickButton = e => {
-    e.preventDefault();
-    console.log(todo.value);
-  };
-
-  return (
-    <Form onSubmit={e => onClickButton(e)} autoComplete="off">
-      <TextField label={props.label} {...todo} />
-      <Button variant="contained" color="primary" onClick={e => onClickButton(e)}>
-        {props.submit}
-      </Button>
-    </Form>
-  );
-}
-
 function useFormInput(initialValue) {
   const [value, setValue] = useState(initialValue);
 
@@ -40,4 +22,21 @@ function useFormInput(initialValue) {
     value,
     onChange: handleValueChange,
   };
+}
+
+export default function SingleInputForm() {
+  const todo = useFormInput('');
+
+  const onClickButton = e => {
+    e.preventDefault();
+  };
+
+  return (
+    <Form onSubmit={e => onClickButton(e)} autoComplete="off">
+      <TextField label="test" value={todo.value} onChange={todo.onChange} />
+      <Button variant="contained" color="primary" onClick={e => onClickButton(e)}>
+        {'Add'}
+      </Button>
+    </Form>
+  );
 }

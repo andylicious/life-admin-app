@@ -1,8 +1,7 @@
 import React from 'react';
+import Container from '@material-ui/core/Container';
 import logo from './logo.svg';
 import './App.css';
-
-import Container from '@material-ui/core/Container';
 import SingleInputForm from './components/SingleInputForm';
 import TodoList from './components/TodoList';
 
