@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -24,12 +25,18 @@ export default function SingleInputForm(props) {
     setTodo('');
   };
 
+  const { label } = props;
+
   return (
     <Form onSubmit={e => onClickButton(e)} autoComplete="off">
-      <TextField label="test" value={todo} onChange={handleValueChange} />
+      <TextField label={label} value={todo} onChange={handleValueChange} />
       <Button variant="contained" color="primary" onClick={e => onClickButton(e)}>
         {'Add'}
       </Button>
     </Form>
   );
 }
+
+SingleInputForm.propTypes = {
+  submit: PropTypes.func.isRequired,
+};

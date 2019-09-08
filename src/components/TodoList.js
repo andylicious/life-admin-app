@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -39,3 +40,12 @@ export default function TodoList(props) {
     </div>
   );
 }
+
+TodoList.defaultProps = {
+  items: [],
+};
+
+TodoList.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.object),
+  checkItem: PropTypes.func.isRequired,
+};
