@@ -1,37 +1,33 @@
-import React, { useState } from 'react';
-import Container from '@material-ui/core/Container';
+import React from 'react';
+import TodoContainer from './containers/TodoContainer';
 import './App.css';
-import SingleInputForm from './components/SingleInputForm';
-import TodoList from './components/TodoList';
+
+// Check for token
+// if (localStorage.jwtToken) {
+//   // Set auth token header auth
+//   setAuthToken(localStorage.jwtToken);
+
+//   // Decode token and get user info and exp
+//   const decoded = jwt_decode(localStorage.jwtToken);
+
+//   // Set user and isAuthenticated
+//   store.dispatch(setCurrentUser(decoded));
+
+//   // Check for expired token
+//   const currentTime = Date.now() / 1000;
+
+//   if (decoded.exp < currentTime) {
+//     store.dispatch(clearCurrentProfile);
+//     store.dispatch(logoutUser);
+
+//     window.location.href = '/login';
+//   }
+// }
 
 function App() {
-  const [todos, setTodos] = useState([
-    { task: 'Walk the dog', finished: false },
-    { task: 'Grocery shopping', finished: false },
-    { task: 'Dinner with Mona', finished: false },
-    { task: 'Hit the gym', finished: false },
-  ]);
-
-  const addTodo = item => {
-    const newTodo = [{ task: item, finished: false }, ...todos];
-    setTodos(newTodo);
-  };
-
-  const checkItem = (status, id) => {
-    const newTodo = status
-      ? [...todos, { task: todos[id].task, finished: status }]
-      : [{ task: todos[id].task, finished: status }, ...todos];
-    const cleaned = newTodo.filter((_, key) => (status ? key !== id : key !== id + 1));
-    setTodos(cleaned);
-  };
-
   return (
     <div className="App">
-      <Container maxWidth="sm">
-        <p>Add item</p>
-        <SingleInputForm label="New todo:" submit={addTodo} />
-        <TodoList items={todos} checkItem={checkItem} />
-      </Container>
+      <TodoContainer />
     </div>
   );
 }
