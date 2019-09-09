@@ -1,8 +1,14 @@
 import axios from 'axios';
 
 export const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO_FAILURE = 'ADD_TODO_FAILURE';
 
-export const addTodo = data => {
+export const addTodo = data => dispatch => {
+  axios
+    .post('http://localhost:5000/api/v1/todos', data)
+    .then(res => dispatch({ type: ADD_TODO, payload: res.data }))
+    .catch(err => dispatch({ type: ADD_TODO_FAILURE, payload: err }));
+
   return {
     type: ADD_TODO,
     payload: data,

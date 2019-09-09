@@ -1,4 +1,10 @@
-import { ADD_TODO, CHECK_TODO, GET_TODOS, GET_TODOS_FAILURE } from '../actions/todoActions';
+import {
+  ADD_TODO,
+  CHECK_TODO,
+  GET_TODOS,
+  GET_TODOS_FAILURE,
+  ADD_TODO_FAILURE,
+} from '../actions/todoActions';
 
 const initialState = {
   todos: [],
@@ -11,7 +17,12 @@ export default function(state = initialState, action) {
     case ADD_TODO:
       return {
         ...state,
-        todos: [action.payload, ...state.todos],
+        todos: [action.payload.data, ...state.todos],
+      };
+    case ADD_TODO_FAILURE:
+      return {
+        ...state,
+        error: true,
       };
     case CHECK_TODO:
       return {

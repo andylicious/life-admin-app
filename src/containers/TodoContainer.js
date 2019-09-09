@@ -14,10 +14,15 @@ export default function TodoContainer() {
     dispatch(getTodos());
   }, [dispatch, todos.length]);
 
+  const error = useSelector(state => state.todos.error);
+  if (error) {
+    window.alert('Something went wrong, please try again');
+  }
+
   // Adding a new item to the todo
   const add = item => {
-    const newTodo = { task: item, finished: false };
-    dispatch(addTodo(newTodo));
+    console.log(item);
+    dispatch(addTodo({ task: item }));
   };
 
   // Checking and adding last or unchecking and putting first in list
