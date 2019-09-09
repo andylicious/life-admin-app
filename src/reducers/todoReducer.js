@@ -4,6 +4,7 @@ import {
   GET_TODOS,
   GET_TODOS_FAILURE,
   ADD_TODO_FAILURE,
+  CHECK_TODO_FAILURE,
 } from '../actions/todoActions';
 
 const initialState = {
@@ -27,7 +28,12 @@ export default function(state = initialState, action) {
     case CHECK_TODO:
       return {
         ...state,
-        todos: action.payload,
+        todos: [...state.todos],
+      };
+    case CHECK_TODO_FAILURE:
+      return {
+        ...state,
+        error: true,
       };
     case GET_TODOS:
       return {

@@ -13,15 +13,11 @@ const UL = styled.ul`
 export default function TodoList(props) {
   const { items, checkItem } = props;
 
-  const handleCheckboxClick = (status, id) => {
-    checkItem(!status, id);
-  };
-
   return (
     <div>
       <UL>
         {items.map((item, key) => (
-          <ListItem key={key} role={undefined} dense button>
+          <ListItem key={item._id} role={undefined} dense button>
             <ListItemIcon>
               <Checkbox
                 edge="start"
@@ -29,11 +25,11 @@ export default function TodoList(props) {
                 tabIndex={-key}
                 checked={item.finished}
                 disableRipple
-                inputProps={{ 'aria-labelledby': key }}
-                onClick={() => handleCheckboxClick(item.finished, key)}
+                inputProps={{ 'aria-labelledby': item._id }}
+                onClick={() => checkItem(item)}
               />
             </ListItemIcon>
-            <ListItemText id={key} primary={item.task} />
+            <ListItemText primary={item.task} onClick={() => checkItem(item)} />
           </ListItem>
         ))}
       </UL>

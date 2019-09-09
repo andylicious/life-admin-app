@@ -21,17 +21,13 @@ export default function TodoContainer() {
 
   // Adding a new item to the todo
   const add = item => {
-    console.log(item);
     dispatch(addTodo({ task: item }));
   };
 
   // Checking and adding last or unchecking and putting first in list
-  const checkItem = (status, id) => {
-    const newTodo = status
-      ? [...todos, { task: todos[id].task, finished: status }]
-      : [{ task: todos[id].task, finished: status }, ...todos];
-    const cleaned = newTodo.filter((_, key) => (status ? key !== id : key !== id + 1));
-    dispatch(checkTodo(cleaned));
+  const checkItem = todo => {
+    const newTodo = { ...todo, finished: !todo.finished };
+    dispatch(checkTodo(newTodo));
   };
 
   return (
