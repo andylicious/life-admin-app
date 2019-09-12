@@ -1,6 +1,10 @@
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
-import TodoContainer from './containers/TodoContainer';
 import './App.css';
+
+import BacklogContainer from './containers/BacklogContainer';
+import Header from './components/Header';
+import TodoContainer from './containers/TodoContainer';
 
 // Check for token
 // if (localStorage.jwtToken) {
@@ -27,7 +31,11 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <TodoContainer />
+      <Header />
+      <Router>
+        <Route exact path="/" component={TodoContainer} />
+        <Route exact path="/backlog" component={BacklogContainer} />
+      </Router>
     </div>
   );
 }

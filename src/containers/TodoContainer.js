@@ -17,6 +17,7 @@ export default function TodoContainer() {
   const error = useSelector(state => state.todos.error);
   if (error) {
     window.alert('Something went wrong, please try again');
+    dispatch(getTodos());
   }
 
   // Adding a new item to the todo
