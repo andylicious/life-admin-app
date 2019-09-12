@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import './App.css';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { theme } from './theme';
 
 import BacklogContainer from './containers/BacklogContainer';
 import Header from './components/Header';
@@ -31,11 +33,13 @@ import TodoContainer from './containers/TodoContainer';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Router>
-        <Route exact path="/" component={TodoContainer} />
-        <Route exact path="/backlog" component={BacklogContainer} />
-      </Router>
+      <MuiThemeProvider theme={theme}>
+        <Header />
+        <Router>
+          <Route exact path="/" component={TodoContainer} />
+          <Route exact path="/backlog" component={BacklogContainer} />
+        </Router>
+      </MuiThemeProvider>
     </div>
   );
 }
