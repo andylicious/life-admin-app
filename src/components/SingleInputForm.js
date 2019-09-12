@@ -12,7 +12,7 @@ const Form = styled.form`
   grid-column-gap: 1em;
 `;
 
-export default function SingleInputForm(props) {
+export default function SingleInputForm({ label, submit }) {
   const [todo, setTodo] = useState('');
 
   const handleValueChange = e => {
@@ -21,11 +21,9 @@ export default function SingleInputForm(props) {
 
   const onClickButton = e => {
     e.preventDefault();
-    props.submit(todo);
+    submit(todo);
     setTodo('');
   };
-
-  const { label } = props;
 
   return (
     <Form onSubmit={e => onClickButton(e)} autoComplete="off">

@@ -10,9 +10,7 @@ const UL = styled.ul`
   padding-inline-start: 0;
 `;
 
-export default function TodoList(props) {
-  const { items, checkItem } = props;
-
+export default function TodoList({ items, checkItem }) {
   return (
     <div>
       <UL>
