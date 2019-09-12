@@ -8,6 +8,7 @@ import TodoList from '../components/TodoList';
 
 export default function TodoContainer() {
   const todos = useSelector(state => state.todos.todos);
+  const isLoading = useSelector(state => state.todos.isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,8 +36,8 @@ export default function TodoContainer() {
     <div>
       <Container maxWidth="sm">
         <p>Add item</p>
-        <SingleInputForm label="New todo:" submit={add} />
-        <TodoList items={todos} checkItem={checkItem} />
+        <SingleInputForm isLoading={isLoading} label="New todo:" submit={add} />
+        <TodoList isLoading={isLoading} items={todos} checkItem={checkItem} />
       </Container>
     </div>
   );

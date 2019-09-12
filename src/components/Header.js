@@ -5,6 +5,7 @@ const Head = styled.header`
   display: block;
 `;
 
+// TODO: Proptypes
 export default function Header() {
   return (
     <div>
