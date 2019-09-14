@@ -39,3 +39,17 @@ export const checkTodo = data => dispatch => {
     .catch(err => dispatch({ type: CHECK_TODO_FAILURE, payload: err }))
     .then(() => dispatch(getTodos()));
 };
+
+export const DELETE_TODO_REQUEST = 'DELETE_TODO_REQUEST';
+export const DELETE_TODO = 'DELETE_TODO';
+export const DELETE_TODO_FAILURE = 'DELETE_TODO_FAILURE';
+
+export const deleteTodo = id => dispatch => {
+  dispatch({ type: DELETE_TODO_REQUEST });
+
+  axios
+    .delete(`http://localhost:5000/api/v1/todos/${id}`)
+    .then(() => dispatch({ type: DELETE_TODO }))
+    .catch(err => dispatch({ type: DELETE_TODO_FAILURE, payload: err }))
+    .then(() => dispatch(getTodos()));
+};

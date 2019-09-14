@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Container from '@material-ui/core/Container';
-import { addTodo, checkTodo, getTodos } from '../actions/todoActions';
+import { addTodo, checkTodo, getTodos, deleteTodo } from '../actions/todoActions';
 
 import SingleInputForm from '../components/SingleInputForm';
 import TodoList from '../components/TodoList';
 
 export default function TodoContainer() {
   const todos = useSelector(state => state.todos.todos);
-  const isLoading = useSelector(state => state.todos.isLoading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,12 +31,16 @@ export default function TodoContainer() {
     dispatch(checkTodo(newTodo));
   };
 
+  const deleteItem = id => {
+    dispatch(deleteTodo(id));
+  };
+
   return (
     <div>
       <Container maxWidth="sm">
         <p>Add item</p>
-        <SingleInputForm isLoading={isLoading} label="New todo:" submit={add} />
-        <TodoList isLoading={isLoading} items={todos} checkItem={checkItem} />
+        <SingleInputForm label="New todo:" submit={add} />
+        <TodoList items={todos} checkItem={checkItem} deleteTodo={deleteItem} />
       </Container>
     </div>
   );
