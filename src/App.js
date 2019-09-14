@@ -3,7 +3,7 @@ import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
-import { theme, Colors } from './theme';
+import { theme, Colors, getPrimaryRgba, getSecondaryRgba } from './theme';
 
 import BacklogContainer from './containers/BacklogContainer';
 import Header from './components/Header';
@@ -40,8 +40,8 @@ function App() {
   return (
     <Container className="App">
       <MuiThemeProvider theme={theme}>
-        <Header />
         <Router>
+          <Header />
           <Route exact path="/" component={TodoContainer} />
           <Route exact path="/backlog" component={BacklogContainer} />
         </Router>

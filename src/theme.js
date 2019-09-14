@@ -4,11 +4,28 @@ const Colors = {
   primary: '#1B065E',
   primaryLight: '#23087B',
   primaryDark: '#11033D',
-  secondary: '#FF6978',
-  secondaryLight: '#FF8C97',
-  secondaryDark: '#FF495A',
-  lightGrey: '#FFFCF9',
-  darkGrey: '#BFC0C0',
+  primaryRgba: 'rgba(,0.5)',
+  secondary: '#FF6B6B',
+  secondaryLight: '#FF7474',
+  secondaryDark: '#D75757',
+  secondaryRgba: 'rgba(255, 107, 107, 0.3)',
+  blueGreen: '#4ECDC4',
+  yellow: '#FFE66D',
+  yellowRgba: 'rgba(255, 230, 109, 0.3)',
+  lightGrey: '#F7FFF7',
+  darkGrey: '#413F4A',
+};
+
+const getAllColors = () => {
+  return [Colors.primary, Colors.secondary, Colors.blueGreen, Colors.yellow];
+};
+
+const getPrimaryRgba = alpha => {
+  return `rgba(27, 6, 94, ${alpha})`;
+};
+
+const getSecondaryRgba = alpha => {
+  return `rgba(255, 107, 107, ${alpha})`;
 };
 
 const theme = createMuiTheme({
@@ -33,4 +50,4 @@ const theme = createMuiTheme({
   },
 });
 
-export { theme, Colors };
+export { theme, Colors, getPrimaryRgba, getSecondaryRgba, getAllColors };

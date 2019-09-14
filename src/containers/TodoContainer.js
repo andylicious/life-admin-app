@@ -1,10 +1,15 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import Container from '@material-ui/core/Container';
+// import styled from 'styled-components';
+import RouteWrapper from './RouteWrapper';
 import { addTodo, checkTodo, getTodos, deleteTodo } from '../actions/todoActions';
 
 import SingleInputForm from '../components/SingleInputForm';
 import TodoList from '../components/TodoList';
+
+// const Container = styled.div`
+//   width: 70%;
+// `;
 
 export default function TodoContainer() {
   const todos = useSelector(state => state.todos.todos);
@@ -36,12 +41,11 @@ export default function TodoContainer() {
   };
 
   return (
-    <div>
-      <Container maxWidth="sm">
-        <p>Add item</p>
+    <RouteWrapper title="Todo List" size="sm">
+      <div>
         <SingleInputForm label="New todo:" submit={add} />
         <TodoList items={todos} checkItem={checkItem} deleteTodo={deleteItem} />
-      </Container>
-    </div>
+      </div>
+    </RouteWrapper>
   );
 }

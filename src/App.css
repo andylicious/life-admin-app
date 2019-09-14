@@ -30,3 +30,14 @@
     transform: rotate(360deg);
   }
 }
+
+.link {
+  text-decoration: none;
+  padding: 0 1em 4px 1em;
+  margin: 0 2em;
+}
+
+.active {
+  color: #1b065e;
+  border-bottom: 2px solid #1b065e;
+}

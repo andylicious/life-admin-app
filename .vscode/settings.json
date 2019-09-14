@@ -4,5 +4,6 @@
   "editor.formatOnType": true,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "javascript.validate.enable": false
 }

@@ -28,7 +28,7 @@ export default function SingleInputForm({ label, submit }) {
   return (
     <Form onSubmit={e => onClickButton(e)} autoComplete="off">
       <TextField label={label} value={todo} onChange={handleValueChange} />
-      <Button variant="contained" color="primary" onClick={e => onClickButton(e)}>
+      <Button fullWidth={false} variant="contained" color="primary" onClick={e => onClickButton(e)}>
         {'Add'}
       </Button>
     </Form>
